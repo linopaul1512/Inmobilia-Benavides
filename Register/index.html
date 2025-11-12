@@ -1,62 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header>
-        <a href="./../Home/index.html"> <img src="LogoInmobilia.png" alt="Imagen de encabezado">  </a>
-    </header>
 
-    <form id="RegistrationForm">
-        <title>Registro</title>
-        <label for="name">
-            <span id="span">Nombre</span>
-            <input type="text" name = "name" id="name">
-        </label>
+<header class="bg-light py-3 border-bottom d-flex align-items-center">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a href="../Home/index.html" class="d-flex align-items-center">
+      <img src="LogoInmobilia.png" alt="Logo Inmobilia" class="logo me-3">
+    </a>
+  </div>
+</header>
 
-        <label for="lastname">
-            <span id="span">Apellido</span>
-            <input type="text" lastname ="lastname" id="lastname">
-        </label>
 
-        <label for="ID">
-            <span id="span">Cédula</span>
-            <input type="text" cedula="cedula" id="ID">
-        </label>
+  <main class="d-flex justify-content-center align-items-center flex-column py-5">
+    <div class="card shadow-lg p-4 form-container">
+      <h2 class="text-center mb-4 text-primary fw-bold">Registro de Usuario</h2>
 
-        <label for="birthdate">
-            <span id="span">Birthdate</span>
-            <input type="date" birthdate="birthdate" id="birthdate">
-        </label>
-
-        <label for="adress">
-            <span id="span">Dirección</span>
-            <input type="text" adress="adress" id="adress">
-        </label>
-
-        <label for="email">
-            <span id="span">Email</span>
-            <input type="email" name="email" id="email">
-        </label>
-
-        <label for="password">
-            <span id="span">Contraseña</span>
-            <input type="password" password = "password" id="password">
-        </label>
-
-        <div>
-            <button type="submit"  id="bt2" id="toRegister">Aceptar</button>
+      <form id="RegistrationForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre">
+          </div>
+          <div class="col-md-6">
+            <label for="lastname" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="lastname" placeholder="Ingresa tu apellido">
+          </div>
+          <div class="col-md-6">
+            <label for="ID" class="form-label">Cédula</label>
+            <input type="text" class="form-control" id="ID" placeholder="Ej: 12345678">
+          </div>
+          <div class="col-md-6">
+            <label for="birthdate" class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="birthdate">
+          </div>
+          <div class="col-md-12">
+            <label for="adress" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="adress" placeholder="Ingresa tu dirección">
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" placeholder="usuario@correo.com">
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Mínimo 6 caracteres">
+          </div>
         </div>
-    </form>
 
-    <footer>Usamos cookies para mejorar tu experiencia en Mercado Libre. Consultar más en nuestro Centro de Privacidad.
-        <button >Aceptar cookies</button>
-        <button >Configurar cookies</button>
-    </footer>
-    <script src="./script.js"></script>
+
+
+        <div class="text-center mt-4">
+        <button type="submit" id="registerBtn" class="btn btn-success px-4">Registrar</button>
+
+        <p class="mt-3 mb-0 text-muted">
+            ¿Ya tienes cuenta?
+            <a href="../Login/index.html" class="fw-semibold text-primary text-decoration-none">Inicia sesión</a>
+        </p>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer mt-auto text-white text-center py-3">
+    <p class="mb-0">© 2025 Inmobilia Benavides</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>

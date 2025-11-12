@@ -1,39 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <img src="LogoInmobilia.png" alt="Imagen de encabezado">
-        <p>Ver todo</p>
-    </header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-light bg-light shadow-sm px-5">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="LogoInmobilia.png" alt="LogoInmobilia" height="50" class="me-2">
+      <span class="fw-bold text-primary">Inmobilia</span>
+    </a>
+  </nav>
 
-    <form id="loginForm">
-        <p>Iniciar Sesión</p>
-        <div>
-            <label for="text">
-                <span id="span">Email</span>
-                <input type="text" email="email" id="email">
-            </label>
+  <!-- Formulario de login -->
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow-lg border-0">
+          <div class="card-body p-4">
+            <h3 class="text-center mb-4 text-primary">Iniciar Sesión</h3>
+
+            <form id="loginForm">
+              <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" placeholder="nombre@correo.com" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label fw-semibold">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="********" required />
+              </div>
+
+              <button type="submit" class="btn btn-success w-100">Iniciar Sesión</button>
+            </form>
+
+            <div class="text-center mt-3">
+              <label>¿No tienes cuenta? <a href="../Registro/registro.html" class="text-primary text-decoration-none fw-semibold">Regístrate</a></label>
+            </div>
+
+            <div id="mensaje" class="text-center mt-3"></div>
+          </div>
         </div>
-       
-        <div>
-            <label for="password">
-                <span id="span">Contraseña</span>
-                <input type="password" password = "password" id="password">
-            </label>
-        </div> 
+      </div>
+    </div>
+  </div>
 
-        <div>
-            <button id="bt2" id="Login">Aceptar</button>
-        </div>
-    </form>
+  <!-- Footer -->
+  <footer class="text-center py-3 mt-5" style="background-color: #3B3BDE;">
+    <p class="text-white mb-0">© 2025 Inmobilia Benavides</p>
+  </footer>
 
-    <footer>Como cuidamos tu privacidad</footer>
-    <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

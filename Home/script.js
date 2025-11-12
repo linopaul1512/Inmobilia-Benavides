@@ -1,82 +1,37 @@
-const loader = document.getElementById('loader');
-const loaderCatch = document.getElementById('loaderCatch');
-let propertyFilter=[];
-let propertyDetails = document.getElementById("propertyDetails");
-let propertyData = [];
-let property;
-let propertyList = document.getElementById("property-list");
+document.addEventListener("DOMContentLoaded", loadProperties);
 
+async function loadProperties() {
+  const apiUrl = "https://apigracosoft.infinityfreeapp.com/controller/back.php?oper=listLocations";
+  const propertyList = document.getElementById("property-list");
 
-//Acceder a la API
-async function fetchPropertyData() {
-    try {
-        const response = await fetch('https://graco-api.onrender.com/propiedad-principales');
-        const data = await response.json();
-        console.log(response)
-        return data;
-    } catch (error) {
-        console.log('Error:', error);
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      propertyList.innerHTML = `<p class="text-danger text-center">Error: no se recibieron propiedades válidas.</p>`;
+      return;
     }
-}
 
-//obtener las propiedades
-async function getPropiety() {
-    try {
-      const response = await fetch('https://graco-api.onrender.com/propiedad-principales', {
-        headers: {
-          'Authorization': localStorage.getItem('token')
-        }
-      });
-  
-      const data = await response.json();
+    propertyList.innerHTML = "";
 
-      propertyData = data;
-      propertyFilter=propertyData.data;
-  
-      return propertyData;
-  
-    } catch (error) {
-      console.log('Error:', error);
-    }
-  }
-  
-  
-  // Función cargar y mostrar
-  async function loadPropiety() {
-    const response = await getPropiety();
-    propertyList.innerHTML = '';
-  
-    const propiedad = response.data;
-  
-    if (Array.isArray(propiedad)) {
-      propiedad.forEach(property => {
-        displaypropiety(property);
-      });
-    } else {
-      console.log('La respuesta de la API no es array:', propiedad);
-    }
-  }
-  
-  //mostrar los propiedades en la lista
-function displaypropiety(property) {
-    const propietyCard = document.createElement('div');
-    propietyCard.classList.add('propietyCard');
-    //
-    
-    if(property.estado == 1)
-      {
-        propietyCard.innerHTML = `
-          <div class="propietyCardUnknown">
-          <img src="${property.imagenes}" alt="${property.imagenes} Art">
-          <p>precio: ${property.precio}</p>
-          <p>metroscuadrados: ${property.metroscuadrados}</p>
+    data.forEach((prop) => {
+      const card = document.createElement("div");
+      card.className = "col-md-4 col-sm-6";
+      card.innerHTML = `
+        <div class="property-card shadow-sm">
+          <img src="${prop.imagen || './placeholder.jpg'}" alt="Propiedad">
+          <div class="property-info text-center">
+            <h5>${prop.lugar || 'Ubicación desconocida'}</h5>
+            <p class="mb-1"><strong>Categoría:</strong> ${prop.categoria || 'N/A'}</p>
+            <p class="mb-1"><strong>Precio:</strong> $${prop.precio || '0'}</p>
           </div>
-          `;
-      } 
-    //
-    propertyList.appendChild(propietyCard);
+        </div>
+      `;
+      propertyList.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error al cargar las propiedades:", error);
+    propertyList.innerHTML = `<p class="text-danger text-center">No se pudieron cargar las propiedades.</p>`;
   }
-
-
-  // Evento cargar Pokémon al cargar la página
-  window.addEventListener('DOMContentLoaded', loadPropiety);
+}

@@ -1,56 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inmobiliaria</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inmobilia | Inicio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-    <header>
-            <nav class="orientacion">
-                <a href="./../Home/index.html"> <img src="LogoRemax.jpg" alt="Imagen de encabezado">  </a>
-                <a href="./../Catalogo/index.html"> <p>Ver todo</p> </a>
-                <a href="./../Ver perfil/index.html"> <p>Ver Perfil</p> </a>
-                <div class="search-bar" >
-                    <img src="lupa.avif" alt="Ícono de búsqueda">
-                    <input type="text" placeholder="Buscar...">
-                </div>
-                <a href="./../Register/index.html">Registrarse</a>
-                <a  href="./../Login/index.html">Iniciar Sesión</a>
-            </nav>
-        
-    </header>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="./LogoInmobilia.png" alt="Logo Inmobilia" height="40" class="me-2">
+        <span class="fw-bold text-primary">Inmobilia</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-   
-    
-    <div class="imgbanner"> 
-        <a>
-            <img src="bannerimg.jpg" alt="bannerimg">
-        </a> 
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center gap-3">
+          <li class="nav-item"><a class="nav-link" href="./../Catalogo/index.html">Ver todo</a></li>
+          <li class="nav-item"><a class="nav-link" href="./../Login/index.html">Iniciar sesión</a></li>
+          <li class="nav-item"><a class="btn btn-primary text-white px-3" href="./../Register/index.html">Registrarse</a></li>
+        </ul>
+      </div>
     </div>
-    
+  </nav>
 
+  <!-- BANNER -->
+  <section class="banner position-relative">
+    <img src="./banner.jpg" class="img-fluid w-100" alt="Banner principal">
+    <div class="banner-overlay d-flex flex-column justify-content-center align-items-center text-white text-center">
+      <h1 class="fw-bold">Encuentra tu próximo hogar</h1>
+      <p>Las mejores propiedades, al alcance de un clic.</p>
+    </div>
+  </section>
 
-    <div id="property-list"></div>
+  <!-- LISTADO DE PROPIEDADES -->
+  <main class="container my-5">
+    <h2 class="text-center mb-4 fw-bold text-primary">Propiedades disponibles</h2>
+    <div id="property-list" class="row g-4 justify-content-center">
+      <!-- Propiedades cargadas por JS -->
+    </div>
+  </main>
 
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white py-4 mt-auto">
+    <div class="container text-center">
+      <p>© 2025 Inmobilia. Todos los derechos reservados.</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="#"><img src="./facebookicon.png" alt="Facebook" width="24"></a>
+        <a href="#"><img src="./Instagram_logo_2022.svg.png" alt="Instagram" width="24"></a>
+        <a href="#"><img src="./WhatsApp.svg.png" alt="WhatsApp" width="24"></a>
+      </div>
+    </div>
+  </footer>
 
-    <footer> 
-        <ul>
-            <p>Usamos cookies para mejorar tu experiencia en la Inmobiliaria. Consultar más en nuestro centro de privacidad</p>
-            <div  class="redes-sociales">
-                <li ><a href="#"><img src="facebookicon.png" alt="Facebook"></a></li>
-                <li><a href="#"><img src="Instagram_logo_2022.svg.png" alt="Instagram"></a></li>
-                <li><a href="https://wa.me/tunumerodetelefono"><img src="WhatsApp.svg.png" alt="WhatsApp"></a></li>
-            </div>
-
-            <button>Aceptar cookies</button>
-            <button>Configurar cookies</button>
-        </ul>  
-       
-    </footer>
-
-
-
-    <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./script.js"></script>
 </body>
+</html>
