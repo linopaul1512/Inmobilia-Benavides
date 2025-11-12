@@ -1,0 +1,147 @@
+body{
+    background-color: #f0ffff;
+    margin: 0;
+    padding: 5%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    background-color: #f1e4c1;
+    padding-bottom: 20px;
+    width: 100%;
+    
+
+}
+
+header p{
+    text-decoration: none;
+    color: #000000;
+
+}
+.orientacion{
+    display: flex;
+    flex-direction: row;
+}
+
+header img{
+    height: 20%;
+    width: 14%; 
+   position: relative;
+    margin-top: 20px;
+}
+
+/* Quitar subrayado y cambiar color de los enlaces */
+header a {
+    text-decoration: none; /* Quita el subrayado */
+    color: black; /* Cambia el color del texto del enlace a azul (#0077cc) */
+    margin-left: 5vh; 
+    display: flex;
+    justify-content: left;
+}
+
+
+#bt2{
+background-color: rgb(143, 224, 20);
+border-color: #008000;
+border-radius: 5px;
+margin-left: 1vh;
+
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+form label {
+    width:100%;
+    padding: 1vh;
+}
+
+form label ::first-line {
+    width:100%;
+}
+
+form label {
+    width: 95%;
+    display: inline-block;
+}
+
+form div :nth-child(2){
+    width: 35%;
+}
+
+
+/* Estilos para el pie de página (footer) */
+footer {
+    background-color: rgb(163, 163, 163);
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    text-align: left;
+    margin-top: auto; /* Colocar el footer al final de la página */
+}
+
+.fot {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: end;
+}
+
+/* Estilos para los textos dentro del footer */
+.fot p {
+    margin-left: 1vh; /* Ajusta el margen izquierdo según tus preferencias */
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    overflow: hidden;
+    border: 2px solid #000000; /* Borde negro de 2px */
+    border-radius: 5px; /* Borde con esquinas redondeadas */
+    padding: 20px; /* Espaciado interno para el contenido dentro del artículo */
+    width: 100vh;
+}
+
+
+article div {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Alinea verticalmente el contenido */
+}
+
+article p {
+    margin-left: 1vh; /* Margen izquierdo para las etiquetas <p> */
+}
+
+
+/* Estilos para tamaños de pantalla más pequeños */
+@media (max-width: 768px) {
+    header img {
+        width: 20%;
+    }
+
+    form div :nth-child(2) {
+        width: 100%;
+    }
+
+    .footer{
+       display: flex;
+       align-items: end;
+    }
+}

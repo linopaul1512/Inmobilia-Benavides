@@ -1,0 +1,264 @@
+body{
+    background-color: #f1ecec;
+    margin: 0;
+    padding: 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    padding-top: 3vh;
+    display: flex ;
+}
+
+.banner img{
+    width: 100%;
+    display: flex;
+}
+
+
+header{
+    background-color: #f1e4c1;
+    padding: 20px;
+    height: 100%; 
+}
+
+/* Quitar subrayado y cambiar color de los enlaces */
+header a {
+    text-decoration: none; /* Quita el subrayado */
+    color: black; /* Cambia el color del texto del enlace a azul (#0077cc) */
+    margin-left: 5vh; 
+    display: flex;
+    justify-content: left;
+}   
+
+
+.orientacion{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+header img{
+    height: 28%;
+    width: 16%; 
+    display: flex;
+    justify-content: left;
+    margin-right: 0%;
+}
+
+.imgbanner img{
+    padding-top: 1vh;
+    height: 35vh;
+    width: 179.5vh;
+    margin: 0 auto; 
+    
+}
+
+
+/* Estilos de las propiedades */
+#property-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.propietyCard {
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    position: relative; /* Agregado para posicionar el borde correctamente */
+    overflow: hidden; /* Agregado para ocultar el desbordamiento del borde */
+}
+
+.propietyCard:hover {
+    transform: scale(1.1);
+}
+
+.propietyCard img {
+    max-width: 80%;
+    height: auto;
+    border: 10px solid #000000; /* Borde negro cuadrado */
+    border-radius: 5px; /* Ajusta según tus necesidades */
+}
+
+.propietyCardUnknown, #estado-1{
+    border: 6px #000000;
+    color: #000000;
+    border-radius: 30px;
+    border-style: ridge;
+    font-size: 20px;
+    background: linear-gradient(to bottom right, rgb(96, 96, 198), pink);
+  }
+  
+.propietyCard h3 {
+    margin-top: 0;
+}
+
+.propietyCard p {
+    margin-bottom: 10px;
+}
+
+
+
+/* Estilos para la barra de redes sociales en el footer */
+.redes-sociales {
+    list-style: none; /* Quita los marcadores de lista */
+    padding: 0;
+    display: flex; /* Muestra los iconos en línea */
+    justify-content: right; /* Centra horizontalmente los iconos */
+    align-items: center; /* Centra verticalmente los iconos */
+    
+}
+
+.redes-sociales li {
+    margin: 0 10px; /* Espacio entre los iconos */
+}
+
+.redes-sociales a img {
+    width: 20px; /* Tamaño de los iconos */
+    height: 20px;
+    border-radius: 50%; /* Hace que los iconos sean circulares (opcional) */
+}
+
+
+
+/* Estilos para la barra de búsqueda */
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    width: 15vw; /* Reduzca el ancho de la barra de búsqueda */
+    height: 3vh;
+}
+
+.search-bar img {
+    width: 15px; /* Reduzca el tamaño del ícono de búsqueda */
+    height: 15px;
+    margin-right: 5px;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 12px; /* Reduzca el tamaño de la fuente del campo de entrada */
+}
+
+
+/* Sección de propiedades */
+.propiedades {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.propiedades h2 {
+    font-size: 24px;
+    margin-bottom: 40px;text-align: center;
+}
+
+.propiedad {
+    margin-bottom: 40px;
+    background-color: #ffffff;
+    border-radius: 1vh;
+    margin-left: 5vh;
+}
+
+.propiedad img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+
+}
+
+.propiedad h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.propiedad p {
+    margin-bottom: 20px;
+}
+
+footer{
+    background-color: rgb(163, 163, 163);
+   display: flex;
+   align-items: end;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    
+    
+};
+
+
+/* Otros estilos pueden permanecer sin cambios */
+
+/* Estilos para la barra de desplazamiento vertical */
+.content {
+    width: 300px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+/* Personaliza la apariencia de la barra de desplazamiento */
+.content::-webkit-scrollbar {
+    width: 8px; /* Reduzca el ancho de la barra de desplazamiento */
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
+
+/* Media queries para dispositivos específicos */
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header img {
+        height: 10px;
+    }
+
+    
+    .banner img {
+       height:50% ;
+    }
+
+    form label {
+        width: 100%;
+    }
+
+    form div :nth-child(3) {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+   
+}

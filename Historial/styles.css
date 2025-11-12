@@ -1,0 +1,101 @@
+body {
+    background-color: #f0ffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-y: scroll; /* Agregar una barra de desplazamiento vertical */
+    min-height: 100vh; /* Establecer la altura mínima del body al 100% de la ventana */
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f1e4c1;
+    padding: 20px;
+    height: 100px;
+}
+
+.orientacion {
+    display: flex;
+    flex-direction: row;
+}
+
+
+header img {
+    height: 30%;
+    width: 20%;
+    display: flex;
+}
+
+
+footer {
+    background-color: rgb(163, 163, 163);
+    width: 100%;
+    height: 10vh;
+    text-align: left;
+    margin-top: auto; /* Colocar el footer al final de la página */
+    flex-shrink: 0; /* Evitar que el footer se contraiga */
+}
+
+
+section {
+    background-color: aqua;
+    display: flex;
+    flex: 1;
+    margin-left: 0; /* Elimina el margen izquierdo */
+}
+
+
+footer p {
+    margin-top: 0;
+}
+
+/* Estilos de las propiedades */
+#property-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.propietyCard {
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    position: relative; /* Agregado para posicionar el borde correctamente */
+    overflow: hidden; /* Agregado para ocultar el desbordamiento del borde */
+}
+
+.propietyCard:hover {
+    transform: scale(1.1);
+}
+
+.propietyCard img {
+    max-width: 80%;
+    height: auto;
+    border: 10px solid #000000; /* Borde negro cuadrado */
+    border-radius: 2vh; /* Ajusta según tus necesidades */
+}
+
+.propietyCardUnknown, #estado-1{
+    border: 6px #000000;
+    color: #000000;
+    border-radius: 30px;
+    border-style: ridge;
+    font-size: 20px;
+    background: linear-gradient(to bottom right, rgb(96, 96, 198), pink);
+  }
+  
+.propietyCard h3 {
+    margin-top: 0;
+}
+
+.propietyCard p {
+    margin-bottom: 10px;
+}
