@@ -1,42 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Historial de Visitas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial de Visitas</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="LogoInmobilia.png" alt="Logo" class="logo">
+    </div>
+    <div class="nav-right">
+      <a href="../Home/index.html" class="nav-link">Home</a>
+      <a href="../Ver perfil/index.html" class="nav-link">Ver perfil</a>
+    </div>
+  </header>
 
-    <header>
-        <nav class="orientacion">
-            <a href="./../Home/index.html"> <img src="LogoRemax.jpg" alt="Imagen de encabezado">  </a>
-        </nav>
-    </header>
+  <main>
+    <h2 style="text-align:center; margin:30px 0;">Propiedades Visitadas</h2>
+    <div id="property-list"></div>
+  </main>
 
+  <footer>
+    <p>Usamos cookies para mejorar tu experiencia en la Inmobiliaria.<br>Consultar más en nuestro centro de privacidad</p>
+  </footer>
 
-    
-
-
-    <article>
-        <h2>Propiedades Visitadas</h2>
-        <div id="property-list"></div>
-    </article>        
-
-        
-    
-        </section>
-
-    </article>
-
-    <footer>   
-        <p>Usamos cookies para mejorar tu experiencia en la Inmobiliaria.<br>Consultar más en nuestro centro de privacidad</p>
-    </footer>
-
-
-
-
-    <script src="./script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

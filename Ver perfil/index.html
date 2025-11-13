@@ -1,70 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Perfil</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de Usuario</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="orientacion">
-            <a href="./../Home/index.html"> <img src="LogoRemax.jpg" alt="Imagen de encabezado">  </a>
-            <a href="./../Catalogo/index.html"> <p>Ver todo</p> </a>
-        </nav>
-    </header>
 
-    
-    <form id="showPerfil">
-        <p>Bienvenido a tu perfil</p>
-        <label for="name">Name </label>
-        <input type="text" name = "name" id="name">
+    <header class="navbar">
+    <div class="nav-left">
+      <img src="LogoInmobilia.png" alt="Logo" class="logo">
+    </div>
+    <div class="nav-right">
+      <a href="../Home/index.html" class="nav-link">Home</a>
+    </div>
+  </header>
 
-        <label for="lastname">Lastname</label>
-        <input type="text" name ="lastname" id="lastname">
+  <main>
+    <form id="userProfile" class="perfil-container">
+      <h2>Mi Perfil</h2>
 
-        <label for="dni">ID</label>
-        <input type="text" name="dni" id="dni">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre">
 
-        <label for="birthdate">Birthdate</label>
-        <input type="date" name="birthdate" id="birthdate">
+      <label for="apellido">Apellido</label>
+      <input type="text" id="apellido" name="apellido">
 
-        <label for="adress">Adress</label>
-        <input type="text" name="adress" id="adress">
+      <label for="fechaNacimiento">Fecha de nacimiento</label>
+      <input type="date" id="fechaNacimiento" name="fechaNacimiento">
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+      <label for="correo">Correo electrónico</label>
+      <input type="email" id="correo" name="correo">
 
-        <div>
-            <button id="submit">Aceptar</button>
-        </div>
-    </form> 
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono">
 
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" name="direccion">
 
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" name="usuario">
 
-    <article>
-        
-        <div>
-            <label>Cambiar Contraseña</label>
-             <a href="./../Contraseña/index.html"> <p>></p> </a>
-            
-        </div>
-        <hr>
-        <div>
-            <label> Ver historial de visitas</label>
-            <a href="./../Historial/index.html"> <p>></p> </a>
-        </div>
-        
-    </article>
+      <label for="contrasena">Contraseña</label>
+      <input type="password" id="contrasena" name="contrasena">
 
+      <div class="btn-group">
+        <button type="submit" class="btn-guardar">Guardar Cambios</button>
+        <button type="reset" class="btn-cancelar">Limpiar</button>
+      </div>
 
-    <footer  class="fot">
-        <p>Trabaja con nosotros</p>
-        <p>Términos y condiciones</p>
-        <p>Accesibilidad</p>
-        <p>Ayuda</p>
-    </footer>
+      <div class="extra-links">
+        <a href="../Historial/index.html" class="extra-link">Ver historial</a>
+        <a href="../Contraseña/index.html" class="extra-link">cambiar contraseña</a>
+      </div>
 
-    <script src="./script.js"></script>
+    </form>
+  </main>
+
+  <footer>
+    <p>
+      Usamos cookies para mejorar tu experiencia en la Inmobiliaria.<br>
+      Consultar más en nuestro centro de privacidad
+    </p>
+  </footer>
 </body>
 </html>
