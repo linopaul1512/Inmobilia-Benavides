@@ -3,53 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Propiedad - Inmobiliaria</title>
-  <link rel="stylesheet" href="propiedad.css">
+  <title>Cambiar Contraseña</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <header class="navbar">
+  <header class="navbar">
     <div class="nav-left">
       <img src="LogoInmobilia.png" alt="Logo" class="logo">
     </div>
     <div class="nav-right">
       <a href="../Home/index.html" class="nav-link">Home</a>
-      <a href="../Perfil/index.html" class="nav-link">Ver perfil</a>
+      <a href="../Ver perfil/index.html" class="nav-link">Ver perfil</a>
     </div>
   </header>
 
-  <main class="propiedad-container">
-    <div class="propiedad-card">
-      <img src="departamento.jpg" alt="Foto del apartamento" class="propiedad-img">
+  <main>
+    <form id="updatePassword">
+      <p>Cambiar Contraseña</p>
+      <label for="password">Contraseña Actual</label>
+      <input type="password" id="password" name="password">
 
-      <div class="propiedad-info">
-        <h2>Apartamento en alquiler</h2>
-        <p><strong>$550 USD/mes</strong></p>
-        <p>Ubicación: Este de Barquisimeto, Avenida Venezuela.</p>
-        <p>Apartamento de lujo para alojamiento.</p>
-        <button id="btnAlquilar" class="btn-alquilar">Alquilar</button>
-      </div>
-    </div>
+      <label for="newpassword">Nueva Contraseña</label>
+      <input type="password" id="newpassword" name="newpassword">
+
+      <button type="submit">Aceptar</button>
+    </form>
   </main>
 
-  <div id="modalAlquilar" class="modal">
-    <div class="modal-content">
-      <span id="cerrarModal" class="cerrar">&times;</span>
-      <h3>Ingrese la fecha de alquiler</h3>
-      <form id="formAlquiler">
-        <label for="fecha">Fecha de inicio</label>
-        <input type="date" id="fecha" name="fecha" required>
-
-        <button type="submit" class="btn-confirmar">Alquilar</button>
-      </form>
-    </div>
-  </div>
-
   <footer>
-    <p>Usamos cookies para mejorar tu experiencia en la Inmobiliaria.<br>
-    Consultar más en nuestro centro de privacidad</p>
+    <p>Usamos cookies para mejorar tu experiencia en la Inmobiliaria.<br>Consultar más en nuestro centro de privacidad</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

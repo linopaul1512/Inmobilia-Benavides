@@ -5,12 +5,12 @@ document.getElementById('RegistrationForm').addEventListener('submit', function(
   const lastname = document.getElementById('lastname').value.trim();
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
-  const ID = document.getElementById('ID').value.trim();
+  const cedula = document.getElementById('cedula').value.trim();
   const birthdate = document.getElementById('birthdate').value;
-  const adress = document.getElementById('adress').value.trim();
 
+/*
   // Validación de campos vacíos
-  if (!name || !lastname || !email || !password || !ID || !birthdate || !adress) {
+  if (!name || !lastname || !email || !password || !cedula || !birthdate ) {
     alert('Por favor, complete todos los campos.');
     return;
   }
@@ -29,24 +29,43 @@ document.getElementById('RegistrationForm').addEventListener('submit', function(
     alert('Debe ser mayor de 18 años para registrarse.');
     return;
   }
+*/
 
-  // Construir el objeto de datos
+  //email, clave, nombre, apellido, cedula, fecha_nac
   const data = {
     nombre: name,
     apellido: lastname,
-    mail: email,
+    email: email,
+    cedula: cedula,
     clave: password,
-    dni: ID,
-    nacimiento: birthdate,
-    direccion: adress
+    fecha_nac: birthdate,
   };
 
-  const registerApi = 'https://apigracosoft.infinityfreeapp.com/controller/back.php?oper=userRegister';
 
+
+  jQuery.ajax({
+                type: "POST",
+                url: "http://localhost/apitest/controller/back.php?oper=userRegister",
+                data: $.parseJSON(data),
+                dataType: "json",
+                beforeSend: function(){
+                    
+                },success: function(respuesta) {
+                    console.log('---->',respuesta);
+                        
+                },error:function(err) {
+                        console.log(err)
+                }
+            });
+
+          
+  //const registerApi = 'http://localhost/apitest/controller/back.php?oper=userRegister';
+
+  /*
   fetch(registerApi, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
+    body: data
   })
   .then(response => response.json())
   .then(result => {
@@ -61,4 +80,7 @@ document.getElementById('RegistrationForm').addEventListener('submit', function(
     console.error('Error en la solicitud:', error);
     alert('Hubo un problema al conectar con el servidor.');
   });
+*/
 });
+
+
