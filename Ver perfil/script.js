@@ -1,102 +1,72 @@
-// Función para obtener y mostrar el perfil
-function showProfile() {
+async function loadProfile() {
+    const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+    const id = usuarioActivo?.id;
 
-    var name = document.getElementById('name');
-    var lastname = document.getElementById('lastname');
-    var email = document.getElementById('email');
-    var password = document.getElementById('password');
-    var ID = document.getElementById('dni'); 
-    var birthdate = document.getElementById('birthdate'); 
-    var adress = document.getElementById('adress');
-    const perfilAPI = 'https://graco-api.onrender.com/perfil';
-  
+    if (!id) {
+        alert("Debes iniciar sesión.");
+        window.location.href = "../Login/index.html";
+        return;
+    }
 
-    fetch(perfilAPI, {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": localStorage.getItem('token'),
-        },
-    })
-    .then(response => response.json())
-    .then(info => async () => {
-        if (info.success) {
-  
-            let user = info.data;
-            
-            // Mostrar la información en los campos
-            name.value = user.nombre;
-            lastname.value = user.apellido;
-            ID.value = user.dni;
-            birthdate.value = user.nacimiento;
-            adress.value = user.direccion;
-            email.value = user.mail;
-           
+    try {
+        const response = await fetch(`http://localhost/apitest/controller/back.php?oper=showProfile&id=${id}`);
+        const data = await response.json();
 
-        } else {
-            // Mostrar mensaje de error
-            alert(info.message);
+        if (!Array.isArray(data) || data.length === 0) {
+            alert("Perfil no encontrado.");
+            return;
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+
+        const user = data[0];
+        document.getElementById("nombre").value = user.nombre;
+        document.getElementById("apellido").value = user.apellido;
+        document.getElementById("fechaNacimiento").value = user.fecha_nac;
+        document.getElementById("correo").value = user.email;
+        document.getElementById("telefono").value = user.cedula;
+    } catch (error) {
+        console.error("Error cargando perfil:", error);
+    }
 }
 
-// Ejecutar la función showProfile al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    showProfile();
+document.getElementById("userProfile").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const apellido = document.getElementById("apellido").value.trim();
+    const fecha_nac = document.getElementById("fechaNacimiento").value.trim();
+    const cedula = document.getElementById("telefono").value.trim();
+
+    const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+    const id = usuarioActivo?.id;
+
+    if (!id) {
+        alert("Debes iniciar sesión para actualizar tu perfil.");
+        return;
+    }
+
+    if (!nombre || !apellido || !fecha_nac || !cedula) {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+
+    const params = new URLSearchParams({ id, nombre, apellido, cedula, fecha_nac });
+
+    try {
+        const response = await fetch(`http://localhost/apitest/controller/back.php?oper=updateProfile&${params.toString()}`, {
+            method: "GET"
+        });
+
+        const data = await response.json();
+
+        if (data.code === "ok") {
+            alert(data.message);
+        } else {
+            alert("Error: " + data.message);
+        }
+    } catch (error) {
+        console.error("Error al actualizar perfil:", error);
+        alert("Error al conectar con el servidor.");
+    }
 });
 
-//modificar perfil
-document.getElementById('showPerfil').addEventListener('submit', function(e) { 
-  e.preventDefault();
-  var name = document.getElementById('name').value;
-  var lastname = document.getElementById('lastname').value;
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  var ID = document.getElementById('dni').value; 
-  var birthdate = document.getElementById('birthdate').value; 
-  var adress = document.getElementById('adress').value;
-
-  const updateAPI = 'https://graco-api.onrender.com/perfil';
-
-  // Validar que los campos no estén vacíos
-  if (!name || !lastname || !email || !password || !ID || !birthdate || !adress) {
-    alert('Por favor, complete todos los campos.');
-    return;
-  }
-    var data = {
-      nombre: name,
-      apellido: lastname,
-      mail: email,
-      clave: password,
-      dni: ID,
-      nacimiento: birthdate,
-      direccion: adress
-    };
-  
-    fetch(updateAPI, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": localStorage.getItem('token'),
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        // Mostrar mensaje de éxito
-        alert(data.message);
-
-      } else {
-        // Mostrar mensaje de error
-        alert(data.message);
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
-});
+document.addEventListener("DOMContentLoaded", loadProfile);

@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3B3BDE;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 50px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #d4d4ff;
+}
+
+h2 {
+  text-align: center;
+  margin: 30px 0;
+  color: #222;
+}
+
+#property-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.propietyCard {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.propietyCard:hover {
+  transform: scale(1.03);
+}
+
+.propietyCard img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.propietyCard h3, 
+.propietyCard p {
+  padding: 10px;
+  margin: 0;
+}
+
+.heart-icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.heart-icon img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.heart-icon:hover img {
+  transform: scale(1.1);
+}
+
+
+footer {
+  background-color: #3B3BDE;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  margin-top: auto;
+}

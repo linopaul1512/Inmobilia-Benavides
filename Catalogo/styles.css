@@ -81,12 +81,13 @@ body {
 }
 
 .card {
-  background-color: white;
+  border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  height: min-content;
+
 }
 .card:hover {
   transform: scale(1.03);

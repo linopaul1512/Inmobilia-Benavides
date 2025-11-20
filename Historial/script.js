@@ -64,7 +64,7 @@ async function getPropiety() {
 function displaypropiety(property) {
     const propietyCard = document.createElement('div');
     propietyCard.classList.add('propietyCard');
-    //
+  
     
     if(property.estado == 2)
       {
@@ -81,5 +81,4 @@ function displaypropiety(property) {
     propertyList.appendChild(propietyCard);
   }
 
-  // Evento cargar Pokémon al cargar la página
   window.addEventListener('DOMContentLoaded', loadPropiety);

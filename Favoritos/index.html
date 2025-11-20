@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cambiar Contraseña</title>
+  <title>Historial de Visitas</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="loadFavorites()">
   <header class="navbar">
     <div class="nav-left">
       <img src="LogoInmobilia.png" alt="Logo" class="logo">
@@ -18,24 +18,14 @@
   </header>
 
   <main>
-    <form id="updatePassword">
-      <p>Cambiar Contraseña</p>
-      <label for="password">Contraseña Actual</label>
-      <input type="password" id="password" name="password">
-
-      <label for="newpassword">Nueva Contraseña</label>
-      <input type="password" id="newpassword" name="newpassword">
-
-      <button type="submit">Aceptar</button>
-    </form>
+    <h2 style="text-align:center; margin:30px 0;">Favoritos</h2>
+    <div id="property-list"></div>
   </main>
 
   <footer>
     <p>Usamos cookies para mejorar tu experiencia en la Inmobiliaria.<br>Consultar más en nuestro centro de privacidad</p>
   </footer>
 
-
   <script src="script.js"></script>
-
 </body>
 </html>

@@ -1,29 +1,51 @@
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const email = document.getElementById("email").value.trim();
+  const correo = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
   const mensaje = document.getElementById("mensaje");
 
-  if (!email || !password) {
+  if (!correo || !password) {
     mensaje.innerHTML = `<p class="text-danger fw-semibold">Todos los campos son obligatorios.</p>`;
     return;
   }
 
-  // Simulación de autenticación local
-  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-  const usuarioEncontrado = usuarios.find(
-    (u) => u.correo === email && u.contrasena === password
-  );
+  const data = {
+    usuario: correo,
+    clave: password,
+  };
 
-  if (usuarioEncontrado) {
-    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
-    mensaje.innerHTML = `<p class="text-success fw-semibold">Inicio de sesión exitoso. Redirigiendo...</p>`;
+  jQuery.ajax({
+    type: "POST",
+    url: "http://localhost/apitest/controller/back.php?oper=login",
+    data: data,
+    dataType: "json",
+    success: function (respuesta) {
+      console.log("Respuesta backend:", respuesta);
 
-    setTimeout(() => {
-      window.location.href = "../Home/index.html"; 
-    }, 1500);
-  } else {
-    mensaje.innerHTML = `<p class="text-danger fw-semibold">Correo o contraseña incorrectos.</p>`;
-  }
+      if (respuesta.status === "Activo") {
+        mensaje.innerHTML = `<p class="text-success fw-semibold">Inicio de sesión exitoso. Redirigiendo...</p>`;
+        
+        const usuarioInfo = {
+          id: respuesta.id,
+          nombre: respuesta.nombre,
+          apellido: respuesta.apellido,
+          usuario: correo
+        };
+
+        localStorage.setItem("usuarioActivo", JSON.stringify(usuarioInfo));
+
+        setTimeout(() => {
+          window.location.href = "../Catalogo/index.html";
+        }, 1500);
+
+      } else {
+        mensaje.innerHTML = `<p class="text-danger fw-semibold">Credenciales inválidas.</p>`;
+      }
+    },
+    error: function () {
+      mensaje.innerHTML = `<p class="text-danger fw-semibold">Error al conectar con el servidor.</p>`;
+    }
+  });
+
 });

@@ -46,7 +46,7 @@ document.getElementById('RegistrationForm').addEventListener('submit', function(
   jQuery.ajax({
                 type: "POST",
                 url: "http://localhost/apitest/controller/back.php?oper=userRegister",
-                data: $.parseJSON(data),
+                data: data, 
                 dataType: "json",
                 beforeSend: function(){
                     
