@@ -8,13 +8,13 @@ document.getElementById('RegistrationForm').addEventListener('submit', function(
   const cedula = document.getElementById('cedula').value.trim();
   const birthdate = document.getElementById('birthdate').value;
 
-/*
+
   // Validación de campos vacíos
   if (!name || !lastname || !email || !password || !cedula || !birthdate ) {
     alert('Por favor, complete todos los campos.');
     return;
   }
-
+/*
   // Validar edad mínima de 18 años
   const birth = new Date(birthdate);
   const today = new Date();

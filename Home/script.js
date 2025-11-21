@@ -44,3 +44,50 @@ async function loadProperties() {
     propertyList.innerHTML = `<p class="text-danger text-center">No se pudieron cargar las propiedades.</p>`;
   }
 }
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarNavbar();
+
+  loadProperties();
+});
+
+function actualizarNavbar() {
+  const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  const navbarUl = document.querySelector(".navbar-nav");
+
+  if (!navbarUl) return;
+
+  navbarUl.innerHTML = `<li class="nav-item"><a class="nav-link" href="./../Catalogo/index.html">Ver todo</a></li>`;
+
+  if (usuarioActivo && usuarioActivo.id) {
+    const perfilLi = document.createElement("li");
+    perfilLi.classList.add("nav-item");
+    perfilLi.innerHTML = `<a class="nav-link" href="./../Ver perfil/index.html">Ver perfil</a>`;
+
+    const cerrarLi = document.createElement("li");
+    cerrarLi.classList.add("nav-item");
+    cerrarLi.innerHTML = `<a class="nav-link" href="#" id="logoutBtn">Cerrar sesión</a>`;
+
+    navbarUl.appendChild(perfilLi);
+    navbarUl.appendChild(cerrarLi);
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("usuarioActivo");
+      location.reload();
+    });
+
+  } else {
+    const loginLi = document.createElement("li");
+    loginLi.classList.add("nav-item");
+    loginLi.innerHTML = `<a class="nav-link" href="./../Login/index.html">Iniciar sesión</a>`;
+
+    const registerLi = document.createElement("li");
+    registerLi.classList.add("nav-item");
+    registerLi.innerHTML = `<a class="btn btn-primary text-white px-3" href="./../Register/index.html">Registrarse</a>`;
+
+    navbarUl.appendChild(loginLi);
+    navbarUl.appendChild(registerLi);
+  }
+}

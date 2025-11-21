@@ -38,27 +38,25 @@ async function loadFavorites() {
                     <h3>${fav.nombre}</h3>
                     <p><strong>Precio:</strong> $${fav.precio}</p>
                     <p><strong>Status:</strong> ${fav.status}</p>
-                    <span class="heart-icon" data-id="${fav.id}">
+                    <span class="heart-icon" data-id="${fav.idLocacion}">
                       <img src="favorito.png" class="heart-img">
-                  </span>
+                    </span>
                 `;
 
                 propertyList.appendChild(card);
             });
-
-            //  eliminar favorito al hacer clic en el corazón
             const heartIcons = document.querySelectorAll(".heart-icon");
+
+            // eliminar favorito
             heartIcons.forEach(icon => {
                 icon.addEventListener("click", async function() {
-                    const id = icon.getAttribute("id");
+                    const id = icon.getAttribute("data-id");
 
-                    // Eliminar favorito  API
                     const res = await fetch(`http://localhost/apitest/controller/back.php?oper=deleteFavorites&id=${id}&usuario=${usuario}`);
                     const result = await res.json();
 
                     alert(result.message);
 
-                    // Eliminar la tarjeta del DOM
                     const card = icon.closest(".propietyCard");
                     if (card) {
                         card.remove();

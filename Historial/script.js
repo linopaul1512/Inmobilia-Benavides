@@ -1,84 +1,44 @@
+document.addEventListener("DOMContentLoaded", async () => {
+  const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  const id = usuarioActivo?.id;
 
-
-const loader = document.getElementById('loader');
-const loaderCatch = document.getElementById('loaderCatch');
-let exit = document.getElementById('logo');
-let propertyFilter=[];
-let propertyDetails = document.getElementById("propertyDetails");
-let propertyData = [];
-let property;
-let propertyList = document.getElementById("property-list");
-
-
-//Acceder a la API
-async function fetchPropertyData() {
-    try {
-        const response = await fetch('https://graco-api.onrender.com/propiedad-principales');
-        const data = await response.json();
-        console.log(response)
-        return data;
-    } catch (error) {
-        console.log('Error:', error);
-    }
-}
-
-//obtener las propiedades
-async function getPropiety() {
-    try {
-      const response = await fetch('https://graco-api.onrender.com/propiedad-principales', {
-        headers: {
-          'Authorization': localStorage.getItem('token')
-        }
-      });
-  
-      const data = await response.json();
-
-      propertyData = data;
-      propertyFilter=propertyData.data;
-  
-      return propertyData;
-  
-    } catch (error) {
-      console.log('Error:', error);
-    }
-  }
-  
-  
-  // Función cargar y mostrar
-  async function loadPropiety() {
-    const response = await getPropiety();
-    propertyList.innerHTML = '';
-  
-    const propiedad = response.data;
-  
-    if (Array.isArray(propiedad)) {
-      propiedad.forEach(property => {
-        displaypropiety(property);
-      });
-    } else {
-      console.log('La respuesta de la API no es array:', propiedad);
-    }
-  }
-  
-  //mostrar los propiedades en la lista
-function displaypropiety(property) {
-    const propietyCard = document.createElement('div');
-    propietyCard.classList.add('propietyCard');
-  
-    
-    if(property.estado == 2)
-      {
-        propietyCard.innerHTML = `
-          <div class="propietyCardUnknown">
-          <img src="${property.imagenes}" alt="${property.imagenes} Art">
-          <p>precio: ${property.precio}</p>
-          <p>metroscuadrados: ${property.metroscuadrados}</p>
-          <p>Estado: ${property.estado}</p>
-          </div>
-          `;
-      } 
-    //
-    propertyList.appendChild(propietyCard);
+  if (!id) {
+    document.getElementById("property-list").innerHTML = "<p>Debes iniciar sesión.</p>";
+    return;
   }
 
-  window.addEventListener('DOMContentLoaded', loadPropiety);
+  const propertyList = document.getElementById("property-list");
+  propertyList.innerHTML = "<p>Cargando historial...</p>";
+
+  try {
+    const response = await fetch(`http://localhost/apitest/controller/back.php?oper=listHistorial&id=${id}`);
+    const result = await response.json();
+
+    if (!result.data || result.data.length === 0) {
+      propertyList.innerHTML = "<p>No hay propiedades en tu historial.</p>";
+      return;
+    }
+
+    propertyList.innerHTML = "";
+    result.data.forEach(prop => {
+      const card = document.createElement("div");
+      card.classList.add("propietyCard");
+
+      card.innerHTML = `
+        <img src="${prop.imagen || './placeholder.jpg'}" alt="${prop.nombre}">
+        <h3>${prop.nombre}</h3>
+        <p><strong>Precio:</strong> $${prop.precio}</p>
+        <p><strong>Lugar:</strong> ${prop.lugar}</p>
+        <p><strong>Categoría:</strong> ${prop.categoria}</p>
+        <p><strong>Estado:</strong> ${prop.status}</p>
+        <p><strong>Fecha de alquiler:</strong> ${prop.fecha_alquiler}</p>
+      `;
+
+      propertyList.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("Error cargando historial:", error);
+    propertyList.innerHTML = "<p>Error al cargar las propiedades.</p>";
+  }
+});

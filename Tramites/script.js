@@ -173,7 +173,7 @@ async function toggleFavorite(id) {
 
     alert(result.message);
 
-    // Cambiar estado visual
+    //Cambiar estado del corazon
     btnFavorito.classList.toggle("favorito");
     btnFavorito.textContent = btnFavorito.classList.contains("favorito")
         ? "♥ En favoritos"

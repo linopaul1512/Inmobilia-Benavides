@@ -5,7 +5,6 @@ body {
   min-height: 100vh;
 }
 
-/* --- Banner --- */
 .banner {
   position: relative;
   height: 50vh;
@@ -29,7 +28,6 @@ body {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
-/* --- Propiedades --- */
 .property-card {
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -58,7 +56,6 @@ body {
   margin-bottom: 8px;
 }
 
-/* --- Footer --- */
 
 footer img:hover {
   transform: scale(1.1);

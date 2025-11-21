@@ -26,53 +26,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      // Verificar contraseña actual
-      const verifyRes = await fetch(`http://localhost/apitest/controller/back.php?oper=verifyPassword&id=${id}&clave=${passwordActual}`, {
-        method: "GET"
-      });
-
-      const verifyText = await verifyRes.text();
-      console.log("Respuesta cruda de verificación:", verifyText);
-
-      let verifyData;
-      try {
-        verifyData = JSON.parse(verifyText);
-      } catch (err) {
-        alert("El servidor devolvió algo inesperado al verificar la contraseña:\n" + verifyText);
-        return;
-      }
-
-      if (verifyData.failure) {
-        alert("La contraseña actual no coincide.");
-        return;
-      }
-
-      // Actualizar contraseña
       const params = new URLSearchParams({ id, clave: nuevaPassword });
-      const updateRes = await fetch(`http://localhost/apitest/controller/back.php?oper=updatePassword&${params.toString()}`, {
-        method: "GET"
-      });
 
-      const updateText = await updateRes.text();
-      console.log("Respuesta cruda de actualización:", updateText);
+      const response = await fetch(
+        `http://localhost/apitest/controller/back.php?oper=updatePassword&${params.toString()}`
+      );
 
-      let updateData;
+      const textResponse = await response.text();
+      console.log("Respuesta cruda:", textResponse);
+
+      let data;
       try {
-        updateData = JSON.parse(updateText);
+        data = JSON.parse(textResponse);
       } catch (err) {
-        alert("El servidor devolvió algo inesperado al actualizar la contraseña:\n" + updateText);
+        alert("El servidor devolvió algo inesperado:\n" + textResponse);
         return;
       }
 
-      if (updateData.code === "ok") {
-        alert(updateData.message);
+      if (data.code === "ok") {
+        alert(data.message);
         form.reset();
       } else {
-        alert("Error: " + updateData.message);
+        alert("Error: " + data.message);
       }
 
     } catch (error) {
-      console.error("Error al cambiar la contraseña:", error);
+      console.error("Error al actualizar contraseña:", error);
       alert("Error al conectar con el servidor.");
     }
   });
